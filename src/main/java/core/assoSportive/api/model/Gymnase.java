@@ -19,10 +19,14 @@ public class Gymnase {
 
     @Id
     private String _id; //Identifiant par défaut
+//        @Field
     private int IdGymnase;
     private int Surface;
-    private String ville;
-    private String AdresseGymnase;
-    private String NomGymnase;
+    private String Ville;
+    @Field("Adresse")
+    private String adressegymnase;
+    private String Nomgymnase;
+
+    @Field("Seances")
     private List<Seance> seances;
 }
