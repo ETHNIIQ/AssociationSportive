@@ -1,42 +1,45 @@
 package core.assoSportive.api.service;
 
-import core.assoSportive.api.DAO.AssoSportiveRepository;
+import core.assoSportive.api.DAO.GymnaseRepository;
 import core.assoSportive.api.model.Gymnase;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@AllArgsConstructor
 @Service
-public class AssoSportiveServiceimpl implements  AssoSportiveService {
+public class GymnaseServiceimpl implements  AssoSportiveService <Gymnase >{
+//implemements pour créer automatiquement les method dont j'ai besoin
 
-    @Autowired
-    AssoSportiveRepository AssoSportiveRepository;
+    private final GymnaseRepository GymnaseRepository;
 
     @Override
     public Gymnase create(Gymnase gymnase) {
-        return AssoSportiveRepository.insert(gymnase);
+        return GymnaseRepository.insert(gymnase);
     }
 
     @Override
     public List<Gymnase> read() {
-        return AssoSportiveRepository.findAll();
+        return GymnaseRepository.findAll();
     }
 
     @Override
     public Gymnase update(Gymnase gymnase) {
-        return AssoSportiveRepository.save(gymnase);
+        return GymnaseRepository.save(gymnase);
     }
 
     @Override
     public Map<String, String> delete(String id) {
 
 //        Check si ça a bien été deleted => Je compte avant et je compte après
-        long beforeDelete = AssoSportiveRepository.count();
-        AssoSportiveRepository.deleteById(id);
-        long afterDelete = AssoSportiveRepository.count();
+        long beforeDelete = GymnaseRepository.count();
+
+        GymnaseRepository.deleteById(id);
+
+        long afterDelete = GymnaseRepository.count();
 
 //        1 way de faire de la gestion d'erreur au niveau du delete
         String messageValue = beforeDelete ==afterDelete ? "Something went wrong" : "Effacé";

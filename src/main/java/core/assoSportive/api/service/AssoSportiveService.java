@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public interface AssoSportiveService {
+public interface AssoSportiveService <T> {
 
-    Gymnase create(Gymnase school);
+    T create(T entity);
 
-    List<Gymnase> read();
+    List<T> read();
 
-    Gymnase update(Gymnase gymnase);
+    T update(T entity);
 
     Map<String, String> delete(String id);
 }
