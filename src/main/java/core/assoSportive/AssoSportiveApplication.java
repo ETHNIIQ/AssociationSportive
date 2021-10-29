@@ -13,9 +13,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.ArrayList;
-import java.util.List;
-//@EnableMongoRepositories(basePackages = "core.assoSportive.api.DAO")
 
 @SpringBootApplication
 public class AssoSportiveApplication {

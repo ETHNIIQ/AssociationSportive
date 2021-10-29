@@ -8,17 +8,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//Est ce que ça ajoute le constructeur des objets instancié dans la classe
-//@AllArgsConstructor // equivalent à l-15-16
-//@AllArgsConstructor
+//@AllArgsConstructor /** Do to the same as line 16-19 **/
 @Service
 public class SportifServiceimpl implements AssoSportiveService<Sportif>{
+    private final SportifRepository sportifRepository;
 
-    //    J'ajoute en paramètre sportifRepository dans le constructeur de ma classe Sportif Service... pour use les method implementé dans cette classe here
-    public SportifServiceimpl(SportifRepository assoSportiveRepo){
+/**  Repository initialization in Service  **/
+    public SportifServiceimpl(SportifRepository assoSportiveRepo) {
         this.sportifRepository =assoSportiveRepo;
     }
-    private final SportifRepository sportifRepository;
 
 
     @Override

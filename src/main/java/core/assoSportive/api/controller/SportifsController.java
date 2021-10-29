@@ -22,7 +22,7 @@ public class SportifsController {
 
     @PostMapping("/newSportif")
     public Sportif addSportif(@RequestBody Sportif sportif){
-         return sportifServiceimpl.create(sportif);
+        return sportifServiceimpl.create(sportif);
     }
 
     public Sportif updateSportif(@RequestBody Sportif sportif){

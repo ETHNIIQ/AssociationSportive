@@ -13,14 +13,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/gymnase")
-@AllArgsConstructor // cf-explanation SportifsServiceimpl.class
-//@CrossOrigin(origins="http://localhost:4200")
+@AllArgsConstructor
+
 public class GymnaseController {
 
    private final GymnaseServiceimpl GymnaseServiceimpl;
-
-//    @Autowired //certain people said not Recommeded
-//    GymnaseServiceimpl GymnaseServiceimpl;
 
     @GetMapping("/allGymnase")
     public List<Gymnase> listAll(){
@@ -32,9 +29,7 @@ public class GymnaseController {
         return GymnaseServiceimpl.create(gymnase);
     }
 
-//  question still :
-//  - how you know the id on the webpage it's invisible
-//  - delete using unique id inicated by @Id in the model.class
+
     @DeleteMapping("/{id}")
     public Map<String, String> deleteSchool(@PathVariable String id){
         return GymnaseServiceimpl.delete(id);

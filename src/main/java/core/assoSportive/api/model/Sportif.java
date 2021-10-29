@@ -26,7 +26,6 @@ public class Sportif {
     private String sexe;
     @Field("Age")
     private String age;
-//    Should not let an empty class or errors!!
     @Field("Sports")
     private Sport sports;
 
