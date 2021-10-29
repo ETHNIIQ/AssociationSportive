@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +25,27 @@ public class AssoSportiveApplication {
 	}
 
 
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedOrigins("http://localhost:4200")
+						.allowedMethods("GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS")
+						.allowCredentials(true)
+						.allowedHeaders("Origin", "Access-Control-Allow-Origin", "Content-Type",
+								"Accept", "Authorization", "Origin, Accept", "X-Requested-With", "Access-Control-Request-Method",
+								"Access-Control-Request-Headers")
+						.exposedHeaders("Origin", "Content-Type", "Accept", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials");
+			}
+		};
+	}
 
 
 //	In order to test function if it's working, great alternative au front
 //	will be launch at the same time than the application
-	@Bean
+/*	@Bean
 	CommandLineRunner runner(GymnaseRepository repository, MongoTemplate mongoTemplate){
 		return args -> {
 
@@ -92,6 +110,6 @@ public class AssoSportiveApplication {
 			repository.insert(gymnase);
 
 		}
-	}
+	}*/
 
 }

@@ -27,8 +27,8 @@ public class Sportif {
     @Field("Age")
     private String age;
 //    Should not let an empty class or errors!!
-//    @Field("Sports")
-//    List<Sport> sports;
+    @Field("Sports")
+    private Sport sports;
 
 
 }

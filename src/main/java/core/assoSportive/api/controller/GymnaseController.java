@@ -14,6 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/gymnase")
 @AllArgsConstructor // cf-explanation SportifsServiceimpl.class
+//@CrossOrigin(origins="http://localhost:4200")
 public class GymnaseController {
 
    private final GymnaseServiceimpl GymnaseServiceimpl;
@@ -23,35 +24,31 @@ public class GymnaseController {
 
     @GetMapping("/allGymnase")
     public List<Gymnase> listAll(){
-
         return GymnaseServiceimpl.read();
     }
 
-    @GetMapping("/something")
-    public String FirsTry(){
-        return " I return a message ";
-    }
-
-
     @PostMapping ("/add")
-    public Gymnase saveGymnase(@RequestBody Gymnase gymnase){
+    public Gymnase saveGymnase(@RequestBody Gymnase gymnase) {
         return GymnaseServiceimpl.create(gymnase);
     }
-
 
 //  question still :
 //  - how you know the id on the webpage it's invisible
 //  - delete using unique id inicated by @Id in the model.class
     @DeleteMapping("/{id}")
     public Map<String, String> deleteSchool(@PathVariable String id){
-
         return GymnaseServiceimpl.delete(id);
     }
 
     @PutMapping("/modifier")
     public Gymnase UpdatedGymnase(@RequestBody Gymnase gymnase){
-
         return GymnaseServiceimpl.update(gymnase);
+    }
+
+
+    @GetMapping("/something")
+    public String FirsTry(){
+        return " I return a message ";
     }
 
 
